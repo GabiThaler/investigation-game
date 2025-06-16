@@ -8,7 +8,7 @@ namespace investigationGameApp
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }
