@@ -17,38 +17,84 @@ namespace investigation_game.Game
             
             string sensor;
             List<string> CorntSensorim = new List<string>();
-            IranianAgentModel invastageter =new IranianAgentModel("Achmed", "junior agent",new List<string> { "basic","phone"});
-            int Max = invastageter.GetSensedivSensor().Count;
-            int cornt = 0;
+            IranianAgentModel invastageter =new IranianAgentModel("Achmed", "junior agent",new List<string> { "basic","phone","basic"});
             Console.WriteLine($"welcom to the investation game you are plaing agentst {invastageter.Name}");
             Console.WriteLine($"the agent is sensitive to {invastageter.GetSensedivSensor()[0]} and {invastageter.GetSensedivSensor()[1]}");
             foreach (string sensn in invastageter.GetSensedivSensor())
             {
                 CorntSensorim.Add(sensn);
             }
-            while (cornt<Max)
+            while (invastageter.Conter < invastageter.GetSensedivSensor().Count)
             {
-                Console.WriteLine("please  enter whot sensor you woould whant to atach to the agent");
-                sensor = Console.ReadLine();
+                
+                sensor = ShowCoice();
                 SensorModel s = new SensorModel(sensor);
                 if (s.Activate(invastageter) && CorntSensorim.Contains(sensor) )
                 {
-                    cornt += 1;
-                    Console.WriteLine($"you gest {cornt} / {Max}");
+                    invastageter.Conter += 1;
+                    Console.WriteLine($"you gest {invastageter.Conter} / {invastageter.GetSensedivSensor().Count}");
                     invastageter.Sensorim.Add(sensor);
                     CorntSensorim.Remove(sensor);
-                    //invastageter.Conter += 1;
+                    
                 }
                 else
                 {
-                    Console.WriteLine($"agent is not senidiv to this type of sensor you gest {cornt}/ {Max}");
+                    Console.WriteLine($"agent is not senidiv to this type of sensor you gest {invastageter.Conter} / {invastageter.GetSensedivSensor().Count}");
                 }
                 
             }
-           
-           
 
 
+        }
+        public string ShowCoice()
+        {
+            string sensor = "";
+            bool flag = true;
+            Console.WriteLine("please  enter whot sensor you woould whant to atach to the agent:");
+            Console.WriteLine("to atach basic click 1:");
+            Console.WriteLine("to atach phone click 2:");
+            Console.WriteLine("to atach movement click 3:");
+            Console.WriteLine("to atach  thermal click 4:");
+            
+            while(flag)
+            {
+                sensor = Console.ReadLine()!;
+                switch (sensor)
+                {
+                    case "1":
+                        {
+                            sensor = "basic";
+                            flag = false;
+                            break;
+                        }
+                    case "2":
+                        {
+                            sensor = "phone";
+                            flag = false;
+                            break;
+                        }
+                    case "3":
+                        {
+                            sensor = "movement";
+                            flag = false;
+                            break;
+                        }
+                    case "4":
+                        {
+                            sensor = "thermal";
+                            flag = false;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("The sensor is not volid.");
+                            Console.WriteLine("please enter a volid sensor.");
+                            break;
+                        }
+
+                }
+            }
+            return sensor;
         }
         
         
