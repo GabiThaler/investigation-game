@@ -12,14 +12,14 @@ namespace investigation_game.Game
 {
     public class Game
     {
+        private IranienAgentFactry IAG = new IranienAgentFactry();
         public void StartGame()
         {
             
             string sensor;
             List<string> CorntSensorim = new List<string>();
-            IranianAgentModel invastageter =new IranianAgentModel("Achmed", "junior agent",new List<string> { "basic","phone","basic"});
+            IranianAgentModel invastageter = IAG.CreatIraninAgent();
             Console.WriteLine($"welcom to the investation game you are plaing agentst {invastageter.Name}");
-            Console.WriteLine($"the agent is sensitive to {invastageter.GetSensedivSensor()[0]} and {invastageter.GetSensedivSensor()[1]}");
             foreach (string sensn in invastageter.GetSensedivSensor())
             {
                 CorntSensorim.Add(sensn);
@@ -54,7 +54,7 @@ namespace investigation_game.Game
             Console.WriteLine("to atach basic click 1:");
             Console.WriteLine("to atach phone click 2:");
             Console.WriteLine("to atach movement click 3:");
-            Console.WriteLine("to atach  thermal click 4:");
+            Console.WriteLine("to atach thermal click 4:");
             
             while(flag)
             {
