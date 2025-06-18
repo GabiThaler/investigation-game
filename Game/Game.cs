@@ -12,6 +12,19 @@ namespace investigation_game.Game
 {
     public class Game
     {
+        private static readonly Game _instance = new Game();
+        private Game()
+        {
+           
+        }
+        public static Game Instance
+        {
+            get
+            {
+               return _instance;
+            }
+        }
+
         private IranienAgentFactry IAG = new IranienAgentFactry();
         public void StartGame()
         {

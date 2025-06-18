@@ -14,7 +14,7 @@ namespace IranianAgentModels
         private List<string> SensedivSensor = new List<string>();
         public List<string> Sensorim = new List<string>();
         public int Conter = 0;
-        public IranianAgentModel(string name,string ranc,List<string> sensedivSensor)
+        public IranianAgentModel(string name, string ranc, List<string> sensedivSensor)
         {
             Name = name;
             Ranc = ranc;
@@ -24,5 +24,7 @@ namespace IranianAgentModels
         {
             return SensedivSensor;
         }
+    }
+}
         
 

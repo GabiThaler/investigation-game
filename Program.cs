@@ -10,8 +10,9 @@ namespace investigationGameApp
         static void Main(string[] args)
         {
 
-            Game NewGame = new Game();
-            NewGame.StartGame();
+            //GamwGame = new Game();
+            //NewGame.StartGame();e Ne
+            Game.Instance.StartGame();
         }
     }
 }
